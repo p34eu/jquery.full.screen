@@ -2,8 +2,17 @@
 jquery fullscreen plugin
 
 
-Usage:
+#Usage:
 
 data-toggle="fullscreen"
 
-                  
+#Options
+  
+  iconEnter:
+  iconExit:
+  
+#Callbacks
+
+
+onenter
+onexit
