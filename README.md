@@ -4,7 +4,8 @@ jquery fullscreen plugin
 
 #Usage:
 
-data-toggle="fullscreen"
+ $('[data-toggle="fullscreen"]').fullscreen();
+
 
 #Options
   
