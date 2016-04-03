@@ -1,10 +1,7 @@
 # jquery.fullscreen
+ /jquery plugin/
 
-jquery fullscreen plugin
-
-Full screen anything.
-By default toggles the web page.
-60 lines non-minified js
+Full screen anything with 60 lines non-minified js
 
 
 #Usage:
