@@ -1,5 +1,5 @@
 {
-  "name": "full.screen",
+  "name": "jquery.full.screen",
   "title": "Full screen toggler",
   "description": "jQuery plugin for adding links that toggle full screen on desktop web app",
   "keywords": [
