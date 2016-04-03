@@ -6,6 +6,10 @@ Full screen anything with 60 lines non-minified js
 
 #Usage:
 
+
+     <sometag data-toggle="fullscreen" > make page full screen</sometag>
+     <sometag data-toggle="fullscreen" data-target="#mydiv" > make #mydiv full screen</sometag>
+     
      $('[data-toggle="fullscreen"]').fullscreen();
 
 
@@ -23,6 +27,6 @@ Full screen anything with 60 lines non-minified js
 
     bower install jquery.full.screen
 
-#Example
+#Try
 
 [here](http://p34eu.github.io/jquery.fullscreen/)
