@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <title>Jquery.fullscreen by p34eu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,100 +10,123 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-<script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
     <script>
+        (function($) {
+            "use strict";
+            $.fn.fullscreen = function(options) {
+                var settings = $.extend({
+                    iconEnter: 'zmdi zmdi-fullscreen-alt',
+                    iconExit: 'zmdi zmdi-fullscreen-exit',
+                    onenter: function() {},
+                    onexit: function() {}
+                }, options);
+                return this.each(function() {
+                    var btn = $(this);
+                    btn.on('click', function(e) {
+                        var target = $(this).data('target'),
+                            t = !target ? document.documentElement : $(target).get()[0],
+                            i = btn.children('i').first();
+                        isfs() ? exit(t, i) : enter(t, i);
+                    });
+                });
 
-(function ($) {
-    "use strict";
-    $.fn.fullscreen = function (options) {
-        var settings = $.extend({
-            iconEnter: 'zmdi zmdi-fullscreen-alt',
-            iconExit: 'zmdi zmdi-fullscreen-exit',
-            onenter: function () { },
-            onexit: function () { }
-        }, options);
-
-        return this.each(function () {
-            var btn = $(this);
-            btn.on('click', function (e) {
-                e.preventDefault();
-                var target = $(this).data('target');
-                if (!target) {
-                    target = document.documentElement;
-                } else {
-                    target = $(target).get()[0];
+                function isfs() {
+                    return window.fulscr && window.fulscr === 1;
                 }
-                var i = btn.children(i).first();
-                enter(target, $(i));
-                //$(this).closest('.dropdown').removeClass('open');
-            })
-        });
-        function exit() {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
+
+                function exit(t, i) {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    }
+                    if (window.fulscr) {
+                        delete(window.fulscr);
+                        settings.onexit.call();
+                        i.removeClass(settings.iconExit).addClass(settings.iconEnter);
+                    }
+                }
+
+                function enter(element, icon) {
+                    settings.onenter.call();
+                    if (element.requestFullscreen) {
+                        element.requestFullscreen();
+                    } else if (element.mozRequestFullScreen) {
+                        element.mozRequestFullScreen();
+                    } else if (element.webkitRequestFullscreen) {
+                        element.webkitRequestFullscreen();
+                    } else if (element.msRequestFullscreen) {
+                        element.msRequestFullscreen();
+                    }
+                    if (icon) {
+                        icon.removeClass(settings.iconEnter).addClass(settings.iconExit);
+                    }
+                    window.fulscr = 1;
+                    setTimeout(function() {
+                        $(document).one('webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange', function(e) {
+                            exit(element, icon);
+                        });
+                    }, 400);
+                }
             }
-            settings.onexit.call();
-        }
-        function enter(element, icon) {
-            if (window.fulscr) {
-                if (icon) {
-                    icon.removeClass(settings.iconExit).addClass(settings.iconEnter);
-                }
-                exit();
-                delete(window.fulscr);
-                settings.onexit.call();
-            } else {
-                if (element.requestFullscreen) {
-                    element.requestFullscreen();
-                } else if (element.mozRequestFullScreen) {
-                    element.mozRequestFullScreen();
-                } else if (element.webkitRequestFullscreen) {
-                    element.webkitRequestFullscreen();
-                } else if (element.msRequestFullscreen) {
-                    element.msRequestFullscreen();
-                }
-                if (icon) {
-                    icon.removeClass(settings.iconEnter).addClass(settings.iconExit);
-                }
-                window.fulscr = 1;
-                settings.onenter.call();
-            }
-        }
-
-    }
-})(jQuery);
+        })(jQuery);
     </script>
-<script>
+    <script>
+        $(document).ready(function() {
+            var t = $('#click').text(),
+                t2 = $('#click2').text();;
+            $('#t1').fullscreen({
+                onenter: function() {
+                    $('#click').text('Click again to exit');
+                },
+                onexit: function() {
+                    $('#click').text(t);
+                }
+            });
+            $('#t2').fullscreen({
+                onenter: function() {
+                    $('#click2').text('Click again to exit');
+                },
+                onexit: function() {
+                    $('#click2').text(t2);
+                }
+            });
 
-$(document).ready(function(){
-$('[data-toggle="fullscreen"]').fullscreen();
+        });
+    </script>
+</head>
 
-});
-</script>
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Jquery.full.screen</h1>
-      <h2 class="project-tagline">Toggle any element or web page full screen </h2>
-      <a href="https://github.com/p34eu/jquery.fullscreen" class="btn">View on GitHub</a>
-      <a href="https://github.com/p34eu/jquery.fullscreen/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/p34eu/jquery.fullscreen/tarball/master" class="btn">Download .tar.gz</a>
+<body>
+    <section class="page-header" style="width:100%">
+        <h1 class="project-name">Jquery.full.screen</h1>
+        <h2 class="project-tagline">Toggle any element or web page full screen </h2>
+        <a href="https://github.com/p34eu/jquery.fullscreen" class="btn">View on GitHub</a>
+        <a href="https://github.com/p34eu/jquery.fullscreen/zipball/master" class="btn">Download .zip</a>
+        <a href="https://github.com/p34eu/jquery.fullscreen/tarball/master" class="btn">Download .tar.gz</a>
+        <br>
+        <a href="#" id="t2" title="toggle full screen" data-target=".page-header" style="color:white">
+            <span id="click2" class="m-r-20">Toggle header: </span>
+            <i class="zmdi zmdi-fullscreen-alt"></i>
+        </a>
+
     </section>
 
     <section class="main-content">
 
-<p></p>Click: <a href="#" data-toggle="fullscreen" title="toggle full screen" 
-class="hidden-md-down zmdi   pull-right m-r-10"> 
-<i data-exiticon="zmdi zmdi-fullscreen-exit" class="zmdi zmdi-fullscreen-alt"></i>
-</a></p>
+        <p> <span id="click">Toggle page:</span>
+            <a href="#" id="t1" title="toggle full screen" class="hidden-md-down zmdi   pull-right m-r-10">
+                <i class="zmdi zmdi-fullscreen-alt"></i>
+            </a>
+        </p>
+
 
 
     </section>
 
 
-  </body>
+</body>
+
 </html>
