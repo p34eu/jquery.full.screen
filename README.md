@@ -27,6 +27,8 @@ Full screen anything with 60 lines non-minified js
 
     bower install jquery.full.screen
 
+    npm install jquery.full.screen
+
 #Try
 
 [here](http://p34eu.github.io/jquery.full.screen/)
