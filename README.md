@@ -1,24 +1,23 @@
 # jquery.fullscreen
-jquery fullscreen plugin
 
+jquery fullscreen plugin
+Full screen any element. By default toggles the web page.
 
 
 
 #Usage:
 
- $('[data-toggle="fullscreen"]').fullscreen();
+     $('[data-toggle="fullscreen"]').fullscreen();
 
 
 #Options
-
-  iconEnter:
-
-  iconExit:
+     iconEnter:
+     iconExit:
 
 #Callbacks
 
-onenter
-onexit
+     onenter
+     onexit
 
 
 #Install
