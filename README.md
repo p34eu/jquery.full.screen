@@ -29,4 +29,4 @@ Full screen anything with 60 lines non-minified js
 
 #Try
 
-[here](http://p34eu.github.io/jquery.fullscreen/)
+[here](http://p34eu.github.io/jquery.full.screen/)
