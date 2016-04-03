@@ -27,4 +27,4 @@ onexit
 
 #Example
 
-[a link](http://p34eu.github.io/jquery.fullscreen/)
+[here](http://p34eu.github.io/jquery.fullscreen/)
