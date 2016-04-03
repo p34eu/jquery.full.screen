@@ -1,0 +1,22 @@
+{
+  "name": "jquery.fullscreen",
+  "main": "jquery.fullscreen.js",
+  "homepage": "https://github.com/p34eu/jquery.fullscreen",
+  "authors": [
+    "p34eu <p@p34.eu>"
+  ],
+  "description": "full screen toggle jquery plugin",
+  "moduleType": [],
+  "keywords": [
+    "full",
+    "screen"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
