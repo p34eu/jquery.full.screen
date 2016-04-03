@@ -1,4 +1,4 @@
-# jquery.fullscreen
+# jquery.full.screen
  /jquery plugin/
 
 Full screen anything with 60 lines non-minified js
