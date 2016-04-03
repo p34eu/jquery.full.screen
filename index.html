@@ -8,6 +8,81 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+<script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+    <script>
+
+(function ($) {
+    "use strict";
+    $.fn.fullscreen = function (options) {
+        var settings = $.extend({
+            iconEnter: 'zmdi zmdi-fullscreen-alt',
+            iconExit: 'zmdi zmdi-fullscreen-exit',
+            onenter: function () { },
+            onexit: function () { }
+        }, options);
+
+        return this.each(function () {
+            var btn = $(this);
+            btn.on('click', function (e) {
+                e.preventDefault();
+                var target = $(this).data('target');
+                if (!target) {
+                    target = document.documentElement;
+                } else {
+                    target = $(target).get()[0];
+                }
+                var i = btn.children(i).first();
+                enter(target, $(i));
+                //$(this).closest('.dropdown').removeClass('open');
+            })
+        });
+        function exit() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+            settings.onexit.call();
+        }
+        function enter(element, icon) {
+            if (window.fulscr) {
+                if (icon) {
+                    icon.removeClass(settings.iconExit).addClass(settings.iconEnter);
+                }
+                exit();
+                delete(window.fulscr);
+                settings.onexit.call();
+            } else {
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullscreen();
+                } else if (element.msRequestFullscreen) {
+                    element.msRequestFullscreen();
+                }
+                if (icon) {
+                    icon.removeClass(settings.iconEnter).addClass(settings.iconExit);
+                }
+                window.fulscr = 1;
+                settings.onenter.call();
+            }
+        }
+
+    }
+})(jQuery);
+    </script>
+<script>
+
+$(document).ready(function(){
+$('[data-toggle="fullscreen"]').fullscreen();
+
+});
+</script>
   </head>
   <body>
     <section class="page-header">
@@ -33,13 +108,16 @@
 <h1>
 <a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options</h1>
 
-<p>iconEnter:
-  iconExit:</p>
-
+<p>
+  iconEnter:
+  <br>
+  iconExit:
+</p>
+<a href="#" data-toggle="fullscreen" title="toggle full screen" class="hidden-md-down zmdi   pull-right m-r-10"> <i data-exiticon="zmdi zmdi-fullscreen-exit" class="zmdi zmdi-fullscreen-alt"></i> </a>
 <h1>
 <a id="callbacks" class="anchor" href="#callbacks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Callbacks</h1>
 
-<p>onenter
+<p>onenter<br>
 onexit</p>
 
       <footer class="site-footer">
@@ -50,6 +128,6 @@ onexit</p>
 
     </section>
 
-  
+
   </body>
 </html>
