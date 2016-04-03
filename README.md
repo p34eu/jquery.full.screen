@@ -24,4 +24,7 @@ onexit
 #Install
 
     bower install jquery.full.screen
-    
+
+#Example
+
+[a link](http://p34eu.github.io/jquery.fullscreen/)
