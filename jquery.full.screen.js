@@ -1,16 +1,15 @@
-
-(function ($) {
+(function($) {
     "use strict";
-    $.fn.fullscreen = function (options) {
+    $.fn.fullscreen = function(options) {
         var settings = $.extend({
             iconEnter: 'zmdi zmdi-fullscreen-alt',
             iconExit: 'zmdi zmdi-fullscreen-exit',
-            onenter: function () { }, onexit: function () { }
+            onenter: function() {},
+            onexit: function() {}
         }, options);
-
-        return this.each(function () {
+        return this.each(function() {
             var btn = $(this);
-            btn.on('click', function (e) {
+            btn.on('click', function(e) {
                 e.preventDefault();
                 var target = $(this).data('target');
                 if (!target) {
@@ -19,10 +18,10 @@
                     target = $(target).get()[0];
                 }
                 var i = btn.children(i).first();
-                enter(target, $(i));
-                //$(this).closest('.dropdown').removeClass('open');
+                enter(target, $(i)); //$(this).closest('.dropdown').removeClass('open');
             })
         });
+
         function exit() {
             if (document.exitFullscreen) {
                 document.exitFullscreen();
@@ -33,6 +32,7 @@
             }
             settings.onexit.call();
         }
+
         function enter(element, icon) {
             if (window.fulscr) {
                 if (icon) {
@@ -58,6 +58,5 @@
                 settings.onenter.call();
             }
         }
-
     }
 })(jQuery);
