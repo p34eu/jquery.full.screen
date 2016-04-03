@@ -1,0 +1,36 @@
+{
+  "name": "jquery.full.screen",
+  "title": "Full screen toggler",
+  "description": "jQuery plugin for adding links that toggle full screen on desktop web app",
+  "keywords": [
+    "ecosystem:jquery ",
+    "jquery-plugin",
+    "navigation",
+    "full",
+    "screen"
+  ],
+  "version": "0.0.4",
+  "author": {
+    "name": "jq",
+    "email": "p@p34.eu"
+  },
+  "maintainers": [
+    {
+      "name": "jq",
+      "email": "p@p34.eu",
+      "url": "http://p34.eu"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/p34eu/jquery.fullscreen/blob/master/LICENSE"
+    }
+  ],
+  "bugs": "https://github.com/p34eu/jquery.fullscreen/issues",
+  "homepage": "http://p34eu.github.io/jquery.fullscreen",
+  "repository": "https://github.com/p34eu/jquery.full.screen.git",
+  "dependencies": {
+    "jquery": ">=1.5"
+  }
+}
