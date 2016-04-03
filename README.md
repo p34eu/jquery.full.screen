@@ -6,28 +6,24 @@
 
 # Example usage:
 
-
-     <sometag data-toggle="fullscreen" > make page full screen</sometag>
-    <sometag data-toggle="fullscreen" data-target="#mydiv" > make #mydiv full screen</sometag>
+    <p data-toggle="fullscreen" > make page full screen</p>
+    <p data-toggle="fullscreen" data-target="#mydiv" > make #mydiv full screen</p>
 
      $('[data-toggle="fullscreen"]').fullscreen();
 
 
 # Options and callbacks
 
-       {
-        iconEnter:'',
-        iconExit:'',
-        onenter:function(){},
-        onexit:function(){}
-      }
+          {
+               iconEnter: 'zmdi zmdi-fullscreen-alt',
+               iconExit: 'zmdi zmdi-fullscreen-exit',
+               onenter: function() {},
+               onexit: function() {}
+          }
 
 
 # Install
 
-    bower or npm install jquery.full.screen
-
-
-    npm install jquery.full.screen
+    bower / npm install jquery.full.screen
 
 # [Test](http://p34eu.github.io/jquery.full.screen/)
