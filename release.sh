@@ -6,7 +6,7 @@
 
 V=`npm version $1 --no-git-tag`
 
-sed -i ""  "4s/.*/\ \*   $V/g" selectables.js
+sed -i ""  "4s/.*/\ \*   $V/g" jquery.full.screen.js
 
 
 git add -A && git commit -m "$2"

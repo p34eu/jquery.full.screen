@@ -1,7 +1,7 @@
 /*
 *   https://github.com/p34eu/jquery.full.screen
 *   
-*
+ *   v0.0.8
 *
 */
 
