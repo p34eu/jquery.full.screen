@@ -3,9 +3,9 @@
   "main": "jquery.fullscreen.js",
   "homepage": "http://p34eu.github.io/jquery.fullscreen/",
   "authors": [
-    "p34eu <p@p34.eu>"
+    "jq"
   ],
-  "description": "full screen toggle jquery plugin",
+  "description": "jQuery plugin for handling links that toggle to full screen  the browser window or single page elements on desktop web app",
   "moduleType": [],
   "keywords": [
     "full",

@@ -1,3 +1,10 @@
+/*
+*   https://github.com/p34eu/jquery.full.screen
+*   
+*
+*
+*/
+
 (function($) {
     "use strict";
     $.fn.fullscreen = function(options) {
@@ -37,7 +44,7 @@
         }
 
         function enter(element, icon) {
-            settings.onenter.call();
+           
             if (element.requestFullscreen) {
                 element.requestFullscreen();
             } else if (element.mozRequestFullScreen) {
@@ -52,10 +59,11 @@
             }
             window.fulscr = 1;
             setTimeout(function() {
+                 settings.onenter.call();
                 $(document).one('webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange', function(e) {
                     exit(element, icon);
                 });
-            }, 400);
+            }, 800);
         }
     }
 })(jQuery);
