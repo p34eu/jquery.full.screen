@@ -8,6 +8,7 @@ V=`npm version $1 --no-git-tag`
 
 sed -i ""  "4s/.*/\ \*   $V/g" jquery.full.screen.js
 
+uglifyjs   --screw-ie8 jquery.full.screen.js -o jquery.full.screen.min.js
 
 git add -A && git commit -m "$2"
 
