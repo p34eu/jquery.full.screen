@@ -1,11 +1,12 @@
 # jquery.full.screen
 
 - One of the many jquery plugins that combine the <a href="http://caniuse.com/#search=fullscreen" target="_blank"> Full Screen API</a> in single call.
-- Lightweight: ~60 lines - 1.2K minified 
-- Allows toggling specific page elements and the window.
+- Lightweight: less than 2K minified.
+- Allows toggling specific page elements and styling the switches according to current state. 
 
 ### Example usage:
 ```html
+
     <p data-toggle="fullscreen" > make page full screen</p>
     <p data-toggle="fullscreen" data-target="#mydiv" > make #mydiv full screen</p>
 
@@ -14,12 +15,13 @@
 
 ### Options and callbacks
 ```js
-          {
-               iconEnter: 'zmdi zmdi-fullscreen-alt',
-               iconExit: 'zmdi zmdi-fullscreen-exit',
-               onenter: function() {},
-               onexit: function() {}
-          }
+{
+    iconEnter: 'zmdi zmdi-fullscreen-alt',
+    iconExit: 'zmdi zmdi-fullscreen-exit',
+    onenter: function() {},
+    onexit: function() {}
+    delay:250
+}
 ```
 
 ### Install
