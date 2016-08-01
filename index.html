@@ -18,7 +18,7 @@
                 t2 = $('#click2').text();;
             $('#t1').fullscreen({
                 onenter: function() {
-                    $('#click').text('Click again to exit');
+                    $('#click').text('Click again or press ESC to exit ');
                 },
                 onexit: function() {
                     $('#click').text(t);
@@ -26,7 +26,7 @@
             });
             $('#t2').fullscreen({
                 onenter: function() {
-                    $('#click2').text('Click again to exit');
+                    $('#click2').text('Click again or press ESC to exit');
                 },
                 onexit: function() {
                     $('#click2').text(t2);
